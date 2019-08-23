@@ -399,6 +399,35 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
                 if (var.name.equalsIgnoreCase(cm.name)) {
                     var.name = "_" + var.name;
                 }
+                if (cm.classname.contains("AllOf"))
+                {
+                    continue;
+                }
+                // HACK: use isEmail to mark the property as ignored for futher customization.
+                if (var.complexType != null &&
+                        (var.complexType.equals("PublicUser") ||
+                         var.complexType.equals("RecruiterInfo") ||
+                         var.complexType.equals("Tag"))) {
+                    var.isEmail = true;
+                }
+                if (cm.name.equals("Team") && var.name.equals("JobCount")) {
+                    var.isEmail = true;
+                }
+                if (cm.name.equals("Post") && var.name.equals("ReplyCount")) {
+                    var.isEmail = true;
+                }
+                if (cm.name.equals("Post") && var.name.equals("LikeCount")) {
+                    var.isEmail = true;
+                }
+                if (cm.name.equals("PostReply") && var.name.equals("LikeCount")) {
+                    var.isEmail = true;
+                }
+                if (cm.name.equals("JobGoal") && var.name.equals("Type")) {
+                    var.isEmail = true;
+                }
+                if (cm.name.equals("JobGoal") && var.name.equals("SalaryType")) {
+                    var.isEmail = true;
+                }
             }
         }
         // process enum in models

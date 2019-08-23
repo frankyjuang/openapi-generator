@@ -20,6 +20,7 @@ namespace {{modelPackage}}
     public {{#modelClassModifier}}{{modelClassModifier}} {{/modelClassModifier}}class {{classname}} : {{#parent}}{{{parent}}}, {{/parent}}IEquatable<{{classname}}>
     {
         {{#vars}}
+        {{^isEmail}}
         {{#items.isEnum}}
         {{#items}}
         {{^complexType}}
@@ -52,6 +53,7 @@ namespace {{modelPackage}}
         {{#hasMore}}
 
         {{/hasMore}}
+        {{/isEmail}}
         {{/vars}}
 
         /// <summary>
