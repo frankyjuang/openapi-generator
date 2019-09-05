@@ -233,8 +233,7 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
         this.useDateTimeOffsetFlag = flag;
         if (flag) {
             typeMapping.put("DateTime", "DateTimeOffset");
-        } else {
-            typeMapping.put("DateTime", "DateTime");
+            typeMapping.put("date", "DateTimeOffset");
         }
     }
 
